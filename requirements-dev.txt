@@ -16,7 +16,7 @@ mypy==1.8.0                    # Type checking
 
 # Security
 pip-audit==2.7.0               # Security vulnerability scanner
-safety==3.0.1                  # Dependency security checker
+# safety removed due to pydantic 2.x compatibility - pip-audit provides equivalent functionality
 bandit==1.7.6                  # Security linting
 
 # Documentation
