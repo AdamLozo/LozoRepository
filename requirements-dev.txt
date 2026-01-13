@@ -1,0 +1,31 @@
+# Development Dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Include production dependencies
+-r requirements.txt
+
+# Testing
+pytest==7.4.4                  # Testing framework
+pytest-cov==4.1.0              # Test coverage
+
+# Code Quality
+black==24.1.1                  # Code formatter
+flake8==7.0.0                  # Linting
+pylint==3.0.3                  # Code analysis
+mypy==1.8.0                    # Type checking
+
+# Security
+pip-audit==2.7.0               # Security vulnerability scanner
+safety==3.0.1                  # Dependency security checker
+bandit==1.7.6                  # Security linting
+
+# Documentation
+sphinx==7.2.6                  # Documentation generator
+
+# Jupyter
+jupyter==1.0.0                 # Jupyter notebook
+ipykernel==6.29.0              # Jupyter kernel
+jupyterlab==4.0.11             # JupyterLab interface
+
+# Development Tools
+ipython==8.20.0                # Interactive Python shell

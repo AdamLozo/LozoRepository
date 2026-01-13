@@ -4,9 +4,33 @@
 
 version: 2
 updates:
-  # Uncomment the section below based on your project type
+  # Python - Data Science Project
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "AdamLozo"
+    labels:
+      - "dependencies"
+      - "python"
+      - "security"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore(dev)"
+    # Group patch and minor updates to reduce PR noise
+    groups:
+      patch-updates:
+        update-types:
+          - "patch"
+      minor-updates:
+        update-types:
+          - "minor"
 
-  # For Node.js/JavaScript projects
+  # For Node.js/JavaScript projects (currently not used)
   # - package-ecosystem: "npm"
   #   directory: "/"
   #   schedule:
@@ -21,7 +45,6 @@ updates:
   #   commit-message:
   #     prefix: "chore"
   #     include: "scope"
-  #   # Group minor and patch updates together
   #   groups:
   #     development-dependencies:
   #       dependency-type: "development"
@@ -32,19 +55,6 @@ updates:
   #       dependency-type: "production"
   #       update-types:
   #         - "patch"
-
-  # For Python projects
-  # - package-ecosystem: "pip"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #     day: "monday"
-  #   open-pull-requests-limit: 10
-  #   reviewers:
-  #     - "AdamLozo"
-  #   labels:
-  #     - "dependencies"
-  #     - "python"
 
   # For Ruby projects
   # - package-ecosystem: "bundler"

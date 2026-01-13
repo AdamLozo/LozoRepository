@@ -1,0 +1,34 @@
+# Core Data Science Libraries
+numpy==1.26.4                  # Numerical computing foundation
+pandas==2.2.0                  # Data manipulation and analysis
+scipy==1.12.0                  # Scientific computing
+
+# Data Visualization
+matplotlib==3.8.2              # Basic plotting
+seaborn==0.13.1                # Statistical visualizations
+plotly==5.18.0                 # Interactive visualizations
+
+# Machine Learning
+scikit-learn==1.4.0            # Machine learning algorithms
+
+# Excel and File Handling
+openpyxl==3.1.2                # Read/write Excel files (.xlsx)
+xlsxwriter==3.1.9              # Advanced Excel writing
+xlrd==2.0.1                    # Read old Excel files (.xls)
+
+# Database Connections
+sqlalchemy==2.0.25             # SQL database toolkit
+psycopg2-binary==2.9.9         # PostgreSQL adapter
+pymssql==2.2.11                # SQL Server adapter
+pymongo==4.6.1                 # MongoDB driver
+
+# HTTP and API
+requests==2.31.0               # HTTP library for APIs
+urllib3==2.1.0                 # HTTP client
+
+# Data Validation
+pydantic==2.5.3                # Data validation
+
+# Utilities
+python-dotenv==1.0.1           # Environment variable management
+tqdm==4.66.1                   # Progress bars
