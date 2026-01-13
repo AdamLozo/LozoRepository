@@ -1,0 +1,161 @@
+# Example GitHub Actions Workflow for Go Dependency Auditing
+# Rename to dependency-audit.yml and remove .example to activate
+
+name: Dependency Audit - Go
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run weekly on Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  security-audit:
+    name: Security Vulnerability Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Verify dependencies
+        run: go mod verify
+
+      - name: Run govulncheck
+        run: |
+          echo "Installing govulncheck..."
+          go install golang.org/x/vuln/cmd/govulncheck@latest
+          echo "Running vulnerability check..."
+          govulncheck ./...
+        continue-on-error: false
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/golang@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+  dependency-check:
+    name: Check for Outdated Dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Check for module updates
+        run: |
+          echo "Checking for available updates..."
+          go list -m -u all
+
+      - name: Check for indirect dependencies
+        run: |
+          echo "Listing all dependencies..."
+          go list -m all
+          echo ""
+          echo "Checking for indirect dependencies that could be direct..."
+          go mod tidy
+
+  module-analysis:
+    name: Go Module Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Analyze module graph
+        run: |
+          echo "Module dependency graph:"
+          go mod graph | head -n 50
+
+      - name: Check why dependencies are needed
+        run: |
+          echo "Checking dependency reasons..."
+          # List all non-stdlib dependencies
+          go list -m all | grep -v "^$(go list -m)$" | while read -r dep; do
+            echo "Why is $dep needed?"
+            go mod why "$dep" || true
+          done
+
+      - name: Download and verify
+        run: |
+          go mod download
+          go mod verify
+
+  license-check:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Install go-licenses
+        run: go install github.com/google/go-licenses@latest
+
+      - name: Check licenses
+        run: |
+          echo "Checking dependency licenses..."
+          go-licenses report ./... --ignore github.com/$(go list -m | awk '{print $1}')
+        continue-on-error: true
+
+  static-analysis:
+    name: Static Analysis and Security
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+          cache: true
+
+      - name: Run gosec security scanner
+        run: |
+          go install github.com/securego/gosec/v2/cmd/gosec@latest
+          gosec -fmt=json -out=gosec-results.json ./...
+        continue-on-error: true
+
+      - name: Upload gosec results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gosec-results
+          path: gosec-results.json

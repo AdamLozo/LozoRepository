@@ -1,0 +1,128 @@
+# Dependabot Configuration
+# This file configures automated dependency updates
+# Documentation: https://docs.github.com/en/code-security/dependabot
+
+version: 2
+updates:
+  # Uncomment the section below based on your project type
+
+  # For Node.js/JavaScript projects
+  # - package-ecosystem: "npm"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "monday"
+  #   open-pull-requests-limit: 10
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "automated"
+  #   commit-message:
+  #     prefix: "chore"
+  #     include: "scope"
+  #   # Group minor and patch updates together
+  #   groups:
+  #     development-dependencies:
+  #       dependency-type: "development"
+  #       update-types:
+  #         - "minor"
+  #         - "patch"
+  #     production-dependencies:
+  #       dependency-type: "production"
+  #       update-types:
+  #         - "patch"
+
+  # For Python projects
+  # - package-ecosystem: "pip"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "monday"
+  #   open-pull-requests-limit: 10
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "python"
+
+  # For Ruby projects
+  # - package-ecosystem: "bundler"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 10
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "ruby"
+
+  # For Go projects
+  # - package-ecosystem: "gomod"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 10
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "golang"
+
+  # For Rust projects
+  # - package-ecosystem: "cargo"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 10
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "rust"
+
+  # For Docker
+  # - package-ecosystem: "docker"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 5
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "docker"
+
+  # GitHub Actions
+  # - package-ecosystem: "github-actions"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "monthly"
+  #   open-pull-requests-limit: 5
+  #   reviewers:
+  #     - "AdamLozo"
+  #   labels:
+  #     - "dependencies"
+  #     - "github-actions"
+
+# Advanced Configuration Options:
+#
+# Ignore specific updates:
+# ignore:
+#   - dependency-name: "package-name"
+#     versions: ["1.x", "2.x"]
+#
+# Allow only security updates:
+# open-pull-requests-limit: 0  # Disable version updates
+# security-updates-only: true
+#
+# Custom branch name:
+# target-branch: "develop"
+#
+# Rebase strategy:
+# rebase-strategy: "auto"  # or "disabled"
+#
+# Assignees:
+# assignees:
+#   - "username"
