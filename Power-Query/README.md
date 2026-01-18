@@ -3,6 +3,20 @@
 <p align='center'><a href='https://www.eventbrite.com/e/algorithmic-trading-with-python-cohort-2-tickets-1833367644979?aff=oddtdtcreator'><img src='https://static.packt-cdn.com/assets/images/packt+events/Python_for_Algorithmic Trading_v1.png'/></a></p>
 
 # The Definitive Guide to Power Query (M), First Edition
+
+## 📥 Download the Complete PDF Book
+
+<p align='center'>
+  <a href='https://1drv.ms/b/c/bbfd6cd223797663/IQAkv65ZDI1fRJ6wb7J79OKgAfp7L9xBBuaw3K2x7qJuFEM?e=jCpy5c'>
+    <img src='https://img.shields.io/badge/Download-PDF_Book-blue?style=for-the-badge&logo=microsoft-onedrive&logoColor=white' alt='Download PDF'/>
+  </a>
+</p>
+
+**The Definitive Guide to Power Query (M) - Complete Book (PDF, 40MB)**  
+Click the badge above to download the full PDF version of the book.
+
+---
+
 This is the code repository for [The Definitive Guide to Power Query (M), First Edition](https://www.packtpub.com/product/the-definitive-guide-to-power-query-m/9781835089729), published by Packt.
 
 **Mastering complex data transformation with Power Query**
