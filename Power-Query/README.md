@@ -34,3 +34,11 @@ Appending, merging, and joining tables.
 - Use native database queries when possible
 - Avoid nested Table functions
 - Test with production data volumes
+
+## File Organization
+
+Each file contains:
+- Description of the transformation
+- M code with comments
+- Usage examples
+- Performance considerations
