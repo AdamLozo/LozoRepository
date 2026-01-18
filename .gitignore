@@ -1,0 +1,24 @@
+# Power BI files
+*.pbix
+*.pbit
+
+# Backup files
+*~
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+*.log
